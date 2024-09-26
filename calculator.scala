@@ -4,7 +4,7 @@
   * the reference described in `README.md` to complete
   * the assignment.
   */
-import scala.util.control.Breaks._
+import scala.util.boundary, boundary.break
 
 @main def calculator(commands: String*): Unit = {
   /** Converts given string `s` to integer.
@@ -72,7 +72,7 @@ import scala.util.control.Breaks._
     }
     blink = !blink
   }
-  breakable {
+  boundary {
     for (c <- commands) {
       c match
         case "+" => sum()
@@ -82,7 +82,7 @@ import scala.util.control.Breaks._
         case "swap" => swap()
         case "blink" => blinkFunc()
         case "acc" => accFunc()
-        case "break" => break
+        case "break" => break()
         case _ => readNumber(c)
     }
   }
